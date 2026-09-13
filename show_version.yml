@@ -1,0 +1,15 @@
+---
+- name: Cisco - infos de base
+  hosts: cisco
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Recuperer la version IOS
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: sortie
+
+    - name: Afficher la sortie
+      debug:
+        var: sortie.stdout_lines
