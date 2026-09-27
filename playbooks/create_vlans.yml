@@ -1,1 +1,18 @@
+---
+- name: Configure VLANs on Cisco L3 Switch
+  hosts: cisco
+  gather_facts: false
 
+  tasks:
+    - name: Create and name VLANs
+      cisco.ios.ios_vlans:
+        config:
+          - vlan_id: 10
+            name: USERS
+          - vlan_id: 20
+            name: SERVERS
+          - vlan_id: 30
+            name: MANAGEMENT
+          - vlan_id: 40
+            name: GUEST
+        state: merged
