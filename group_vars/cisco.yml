@@ -1,1 +1,8 @@
 
+---
+ansible_network_os: cisco.ios.ios
+ansible_connection: network_cli
+ansible_user: admin
+ansible_paramiko_look_for_keys: false
+ansible_ssh_common_args: "-o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc"
+ansible_network_cli_ssh_type: libssh
