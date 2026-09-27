@@ -1,0 +1,15 @@
+---
+- name: Test Cisco configuration
+  hosts: cisco
+  gather_facts: false
+
+  tasks:
+    - name: Test connection to Cisco
+      cisco.ios.ios_command:
+        commands:
+          - show running-config
+      register: result
+
+    - name: Display result
+      debug:
+        var: result.stdout_lines
