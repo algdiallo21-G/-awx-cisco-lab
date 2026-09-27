@@ -1,1 +1,16 @@
-show vlan brief
+
+---
+- name: Verify VLANs on Cisco L3 Switch
+  hosts: cisco
+  gather_facts: false
+
+  tasks:
+    - name: Show VLAN configuration
+      cisco.ios.ios_command:
+        commands:
+          - show vlan brief
+      register: vlan_output
+
+    - name: Display VLAN configuration
+      debug:
+        var: vlan_output.stdout_lines
